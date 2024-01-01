@@ -1,10 +1,20 @@
 'use strict';
+// function calcAverageCalories(days) {
+//   if (days.length === 0) {
+//     return 0;
+//   }
+//   const totalCalories = days.reduce((acc, day) => acc + day.calories, 0);
+//   const averageCalories = totalCalories / days.length;
+//   return Math.round(averageCalories);
+// }
+
 function calcAverageCalories(days) {
   if (days.length === 0) {
-    return 0; 
+    return 0;
   }
-  const totalCalories = days.reduce((acc, day) => acc + day.calories, 0);
-  const averageCalories = totalCalories / days.length;
+  const caloriesArray = [...days.map(day => day.calories)];
+  const [first, ...rest] = caloriesArray;
+  const averageCalories = rest.reduce((acc, calories) => acc + calories, first) / days.length;
   return Math.round(averageCalories); 
 }
 
