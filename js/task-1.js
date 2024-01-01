@@ -1,9 +1,16 @@
 'use strict';
-function isEnoughCapacity(products, containerSize) {
+// function isEnoughCapacity(products, containerSize) {
 
-  const totalProducts = Object.values(products).reduce((acc, count) => acc + count, 0);
+//   const totalProducts = Object.values(products).reduce((acc, count) => acc + count, 0);
 
  
+//   return totalProducts <= containerSize;
+// }
+
+function isEnoughCapacity(products, containerSize) {
+  const productQuantities = [...Object.values(products)];
+  const [first, ...rest] = productQuantities;
+  const totalProducts = rest.reduce((acc, count) => acc + count, first);
   return totalProducts <= containerSize;
 }
 
